@@ -1,0 +1,81 @@
+{% extends 'maintenance/base.html' %}
+{% block menubar %}
+
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="{% url 'home' %}">หน้าแรก</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'senrepair' %}">ส่งซ่อม</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'orders' %}">รายการส่งซ่อม</a>
+</li>
+{% endblock menubar %}
+
+{% block content %}
+<h3>Blogs content</h3>
+<div class="album py-5 bg-body-dark">
+  <div class="container">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {%  for post in posts%}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img class="bd-placeholder-img card-img-top" width="75%" height="300" style="object-fit: cover;" src="{{ post.images.url }} "></img>
+          <div class="card-body">
+            <p class="card-text">{{post.title}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{post.link}}" target="_blank">
+                  view</a></button>
+              </div>
+              <small class="text-body-secondary">{{post.date_created|date}}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%  endfor %}
+    </div>
+  </div>
+</div><hr>
+
+<div class container>
+  <h1>Introduction to BTS HHPSD</h1><br>
+
+    <p> - HHPSD is primarily for the salfty of passengers at the platform form acciidentally failling
+      on the track
+    </p>
+
+    <p> 
+      - HHPSD also provides proper traffic flow of the passengers in and out of the train
+    </p>
+
+    <p>
+      - Improves throughput for the operator 
+    </p>
+
+    <p>
+      - HHPSD also prevents track dust and shield potential objects from the track back to the platform
+    </p>
+
+    <p>
+     - The HHPDS system must only be used in good working condition
+    </p><br>
+
+      <h1>Introduction to BTS HHPSD typical demention</h1><br>
+      <img src="/media/dementionpsd.png" width="100%"><br>
+      <center><p>Refer to drawing attached</p></center><br>
+
+    <p>
+      - Doorways 7 to 22 are motorised. The remaining Doorways have all mechanical features
+      except motor and DCU
+    </p>
+
+    <p>
+      - The non-motorised doors are part of salfty loop and their open status will be monitored
+     </p>
+
+      <center><h5><a href="/media/pdf/manual/BTS Operation Training-1.pdf" target="_blank">
+      <mark>อ่านต่อ</mark></a><h5></center><hr>
+</div>
+{% endblock content %}

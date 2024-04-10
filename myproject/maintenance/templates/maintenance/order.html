@@ -1,0 +1,79 @@
+{% extends 'maintenance/base.html' %}
+{% block title %} รายการช่างแจ้งซ่อม {% endblock title %}
+
+{% block menubar %}
+<li class="nav-item">
+  <a class="nav-link" aria-current="page" href="{% url 'home' %}">หน้าแรก</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'senrepair' %}">ส่งซ่อม</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active" href="{% url 'orders' %}">รายการส่งซ่อม</a>
+</li>
+{% endblock menubar %}
+</ul>
+
+{% block content %}
+<br>  
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    </style>
+  <h1><center>รายการแจ้งซ่อม</center></h1><br>
+<div class="w3-container mt-3 ">
+   
+
+  <table class="table table-hover">
+    
+    <thead> 
+      <tr class="w3-light-grey">
+     
+        <th><center>รายการ</center></th>
+        <th><center>Work</center></th>
+        <th><center>Serial</center></th>
+        <th><center>Station</center></th>
+        <th><center>Bound</center></th>
+        <th><center>Equipment</center></th>
+        <th><center>รายละเอียด</center></th>
+        <th><center>วันที่แจ้ง</center></th>
+        <th><center>ผู้แจ้งซ่อม</center></th>      
+        <th><center>สถานะ</center></th>
+      </tr>
+    </thead>
+    {% for t in order %}
+    <tr>
+      
+      
+      <td><center>{{t.title}}</center></td>
+      <td><center>{{t.work_order}}</center></td>
+      <td><center>{{t.serial}}</center></td>
+      <td><center>{{t.station}}</center></td>
+      <td><center>{{t.bound}}</center></td>
+      <td><center>{{t.equipment}}</center></td>
+      <td><center>{{t.detial}}</center></td>
+      <td><center>{{t.stamp}}</center></td>
+      <td><center>{{t.sentrepairby}}</center></td>
+   
+      {% comment  %}{% endcomment  %}
+      <td>
+        {% if t.status%}
+        <center>
+          <a href="{% url 'updatestatus' t.orderid 'cancel'%}"><i class="fa fa-check-square" style="font-size:20px;color:green;">สำเร็จ</i></a>
+        </center>
+          {% else %}
+          <center>
+              <a class="btn btn-light" href="{% url 'updatestatus' t.orderid 'confirm'%}">
+                  <i class="fa fa-plus-square" style="font-size:16px;color:red;">รอรับเรื่อง</i>
+                  </a>
+                </center>
+          {% endif %}
+      </td>
+      
+    </tr>
+    {% endfor %}
+  </table><br><br><br><br>
+</div>
+{% endblock content %}

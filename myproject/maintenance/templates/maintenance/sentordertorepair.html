@@ -1,0 +1,189 @@
+{% extends 'maintenance/base.html' %}
+<title>{% block title %} ส่งซ่อม {% endblock title %}</title>
+
+{% block menubar %}
+<li class="nav-item">
+  <a class="nav-link" aria-current="page" href="{% url 'home' %}">หน้าแรก</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active" href="{% url 'senrepair' %}">ส่งซ่อม</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'orders' %}">รายการส่งซ่อม</a>
+</li>
+{% endblock menubar %}
+
+{% block content %}
+<br>
+<center><h2>ระบบแจ้งซ่อม</h2></center><br>
+
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+ <!-- <form method="POST">  {% csrf_token %} 
+  เป็นแกรมม่าของ Django จร้า...-->
+
+  <div class="form-group">
+      <div class="form-group">
+        <h5><label for="name">รายการส่งซ่อม</label></h5>
+        <select class="form-select" id="title" name="title">
+            <option disabled="selected" selected="selected">Select Items</option>
+            <option>Door control Unit</option>
+            <option>Motor</option>
+            <option>Rectifier</option>
+            <option>อื่นๆ</option>
+        </select>
+  <div><br>
+
+    <div class="form-group">
+      <label for="work_order"><h5>Work Order</h5></label><br>
+      <input type="text" class="form-control" id="work_order" name="work_order" placeholder="60000064" style="height:50px">
+    </div><br>
+
+    <div class="form-group">
+      <label for="serial"><h5>Serial</h5></label><br>
+      <input type="text" class="form-control" id="serial" name="serial" placeholder="STEDCU100/13" style="height:50px">
+    </div><br>
+
+      {% comment  %}
+    <div class="form-group">
+      <label for="station"><h5>Station</h5></label><br>
+      <input type="text" class="form-control" id="station" name="station" placeholder="E5" style="height:50px">
+    </div><br>
+    {% endcomment %}
+
+    <div class="form-group">
+      <div class="form-group">
+        <h5><label for="name">Station</label></h5>
+        <select class="form-select" id="station" name="station">
+            <option disabled="selected-station" selected="selected-station">Select station</option>
+            <optgroup label="Line-E">
+              <option>E1</option>
+              <option>E4</option>
+              <option>E5</option>
+              <option>E6</option>
+              <option>E9</option>
+              <option>E15</option>
+              <option>E16</option>
+              <option>E17</option>
+              <option>E18</option>
+              <option>E19</option>
+              <option>E20</option>
+              <option>E21</option>
+              <option>E22</option>
+              <option>E23</option>
+            </optgroup>
+
+            <optgroup label="สยาม">
+              <option>CEN</option>
+            </optgroup>
+
+            <optgroup label="Selom-Line">
+              <option>S2</option>
+              <option>S3</option>
+              <option>S5</option>
+            </optgroup>
+
+            <optgroup label="Line-N">
+              <option>N9</option>
+              <option>N10</option>
+              <option>N11</option>
+              <option>N12</option>
+              <option>N13</option>
+              <option>N14</option>
+              <option>N15</option>
+              <option>N16</option>
+              <option>N17</option>
+              <option>N18</option>
+              <option>N19</option>
+              <option>N20</option>
+              <option>N21</option>
+              <option>N22</option>
+              <option>N23</option>
+              <option>N24</option>
+            </optgroup>
+
+            <optgroup label="Gold-Line">
+              <option>G1</option>
+              <option>G2</option>
+              <option>G3</option>
+            </optgroup>
+
+        </select>
+  <div><br>
+    {% comment  %}
+    <div class="form-group">
+      <label for="bound"><h5>Bound</h5></label><br>
+      <input type="text" class="form-control" id="bound" name="bound" placeholder="EB" style="height:50px">
+    </div><br>
+    {% endcomment  %}
+
+    <div class="form-group">
+      <div class="form-group">
+        <h5><label for="bound">Bound</label></h5>
+        <select class="form-select" id="bound" name="bound">
+            <option disabled="selected-bound" selected="selected-bound">Select bound</option>
+            <option>EB</option>
+            <option>NB</option>
+            <option>SB</option>
+            <option>WB</option>
+            <option>IB</option>
+            <option>OUT</option>
+        </select>
+  <div><br>
+    {% comment  %}
+    <div class="form-group">
+      <label for="equipment"><h5>Equipment</h5></label><br>
+      <input type="text" class="form-control" id="equipment" name="equipment" placeholder="D5" style="height:50px">
+    </div><br>
+    {% endcomment  %}
+
+    <div class="form-group">
+      <div class="form-group">
+        <h5><label for="equipment">Equipment</label></h5>
+        <select class="form-select" id="title" name="equipment">
+            <option disabled="select-equipment" selected="select-equipment">equipment</option>
+            <option>DAD</option>
+            <option>EED</option>
+            <option>D1</option>
+            <option>D2</option>
+            <option>D3</option>
+            <option>D4</option>
+            <option>D5</option>
+            <option>D6</option>
+            <option>D7</option>
+            <option>D8</option>
+            <option>D9</option>
+            <option>D10</option>
+            <option>D11</option>
+            <option>D12</option>
+            <option>D13</option>
+            <option>D14</option>
+            <option>D15</option>
+            <option>D16</option>
+            <option>D17</option>
+            <option>D18</option>
+            <option>D19</option>
+            <option>D20</option>
+            <option>D21</option>
+            <option>D22</option>
+            <option>D23</option>
+            <option>D24</option>
+        </select>
+  <div><br>
+    
+  <div class="form-group">
+    <label for="detial"><h5>รายละเอียดแจ้งซ่อม</h5></label><br><br>
+    <textarea class="form-control" rows="5" id="detial" name='detial' placeholder="M not open" style="height:100px"></textarea>
+    <br>
+
+    <div class="form-group">
+      <label for="sentrepairby"><h5>ผู้แจ้งซ่อม</h5></label><br>
+      <input type="text" class="form-control" id="sentrepairby" name="sentrepairby" placeholder="นพดล" style="height:50px">
+    </div><br><br>
+
+    <button type="submit" class="btn btn-primary" >Submit</button><br><br>
+
+</form>
+
+{% endblock content %}
